@@ -1,0 +1,53 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cats!</title>
+    <script src="Scripts/knockout-3.4.2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Help me name my cat!</h2>
+        <img src="https://www.petmd.com/sites/default/files/Senior-Cat-Care-2070625.jpg" alt="?" />
+
+        <p>This is my cat, we adopted her a week ago but we dont like the name the previous owners gave her.<br /></p>
+
+        <p>If this was your cat, what would you name her? <br/> (Submit your answer below and add to the list!) </p>
+
+        <input type="text" data-bind="value: cat" />
+        <br />
+        <input type="submit" data-bind="click: addCat" />
+        <hr />
+
+        <ul data-bind="foreach: catArray">
+
+                <li data-bind="text: $data">
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <script>
+            var vm = {
+                cat: ko.observable(),
+                catArray: ko.observableArray(),
+            
+                addCat: function () {
+                 
+                    this.catArray.push(this.cat());
+                }
+            };
+
+            vm.cat("Cat Name here:");
+
+            ko.applyBindings(vm);
+
+        </script>
+    </body>
+    </html>
+
+
+   
